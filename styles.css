@@ -9,9 +9,9 @@
   --text: #1a1714;
   --text-2: #5a5347;
   --text-3: #9a9185;
-  --accent: #8b5e3c;
-  --accent-hover: #a06d48;
-  --border: #e2dcd2;
+  --accent: #6b4a30;
+  --accent-hover: #8a6347;
+  --border: #d9d1c3;
   --ink: #1a1714;
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -147,9 +147,8 @@ hr {
   font-weight: 400;
 }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.nav-cta { color: var(--accent); }
-.nav-links a.nav-cta:hover { color: var(--accent-hover); }
-
+.nav-links a.nav-cta { color: var(--ink); font-weight: 500; }
+.nav-links a.nav-cta:hover { color: var(--ink); }
 .nav-toggle {
   display: none;
   background: none;
@@ -177,24 +176,24 @@ hr {
 .btn:hover { text-decoration: none; }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--surface);
-  border-color: var(--accent);
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: var(--surface);
+  background: #3a342c;
+  border-color: #3a342c;
+  color: var(--bg);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--ink);
+  border-color: var(--ink);
 }
 .btn-secondary:hover {
-  background: var(--accent);
-  color: var(--surface);
+  background: var(--ink);
+  color: var(--bg);
 }
 
 .btn-row {
@@ -221,9 +220,11 @@ hr {
 }
 .hero .eyebrow { margin-bottom: 1.8rem; }
 .hero h1 {
-  max-width: 640px;
+  max-width: 780px;
   margin: 0 auto 1.25rem;
-  font-size: 2.4rem;
+  font-size: 3rem;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 .hero .subline {
   max-width: 520px;
@@ -421,8 +422,8 @@ hr {
 
 /* ---------- CTA bar ---------- */
 .cta-bar {
-  background: var(--accent);
-  color: var(--surface);
+  background: var(--ink);
+  color: var(--bg);
   padding: 3.5rem 1rem;
   text-align: center;
 }
@@ -438,9 +439,9 @@ hr {
   line-height: 1.4;
 }
 .cta-bar .btn-cta-inverse {
-  background: var(--surface);
-  color: var(--accent);
-  border-color: var(--surface);
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--bg);
   padding: 0.78rem 1.5rem;
   font-size: 0.9rem;
   border-radius: 2px;
@@ -448,8 +449,9 @@ hr {
   font-family: var(--sans);
 }
 .cta-bar .btn-cta-inverse:hover {
-  background: var(--bg);
-  color: var(--accent-hover);
+  background: transparent;
+  color: var(--bg);
+  border-color: var(--bg);
   text-decoration: none;
 }
 
@@ -708,4 +710,88 @@ hr {
   h1 { font-size: 1.7rem; }
   .hero h1 { font-size: 1.7rem; }
   .btn-row .btn { width: 100%; text-align: center; }
+}
+
+/* Hero portrait overlap */
+   .hero-headline-wrap {
+     position: relative;
+     max-width: 640px;
+     margin: 0 auto 1.25rem;
+   }
+   .hero-headline-wrap h1 {
+     margin: 0;
+     position: relative;
+     z-index: 1;
+   }
+   .hero-portrait {
+     position: absolute;
+     top: -175px;
+     left: 14px;
+     width: 180px;
+     height: auto;
+     z-index: 2;
+     pointer-events: none;
+   }
+   @media (max-width: 768px) {
+     .hero-portrait {
+       width: 120px;
+       top: -60px;
+       left: -10px;
+     }
+   }
+
+   /* Credentials story (essays page) */
+.credentials-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.credentials-text h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  max-width: 22ch;
+}
+.credentials-text p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 56ch;
+}
+.credentials-text p + p {
+  margin-top: 1rem;
+}
+.credentials-image {
+  margin: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.75rem;
+}
+.credentials-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+.credentials-image figcaption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.9rem 0.25rem 0.25rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .credentials-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .credentials-text h2 {
+    font-size: 1.5rem;
+  }
 }
