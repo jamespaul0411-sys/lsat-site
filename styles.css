@@ -1,0 +1,711 @@
+/* ============================================================
+   James Paul - LSAT Tutoring & Essay Review
+   Editorial stylesheet. Warm cream, serif display, mono accents.
+   ============================================================ */
+
+:root {
+  --bg: #f5f0e8;
+  --surface: #fffdf7;
+  --text: #1a1714;
+  --text-2: #5a5347;
+  --text-3: #9a9185;
+  --accent: #8b5e3c;
+  --accent-hover: #a06d48;
+  --border: #e2dcd2;
+  --ink: #1a1714;
+
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --nav-h: 48px;
+  --page-max: 1080px;
+  --reading-max: 640px;
+  --wide-pad: 2rem;
+  --section-gap: 5rem;
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--nav-h);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.4rem; font-weight: 700; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+
+p { margin: 0 0 1em; color: var(--text); }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--wide-pad);
+}
+
+.container-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--wide-pad);
+}
+
+.section { padding: var(--section-gap) 0; }
+.section-tight { padding: 3.5rem 0; }
+.section-bordered { border-top: 1px solid var(--border); }
+
+/* ---------- Editorial labels ---------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 0 0 1.2rem;
+  display: inline-block;
+}
+
+.eyebrow-accent { color: var(--accent); }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+.nav-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--wide-pad);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  font-weight: 400;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.nav-cta { color: var(--accent); }
+.nav-links a.nav-cta:hover { color: var(--accent-hover); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.nav-toggle svg { display: block; }
+
+/* ---------- Buttons / CTAs ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.78rem 1.35rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  line-height: 1;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--surface);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--surface);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.btn-secondary:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Inline accent link with arrow */
+.arrow-link {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 400;
+}
+.arrow-link:hover { color: var(--accent-hover); }
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 5rem 1rem 3.75rem;
+}
+.hero .eyebrow { margin-bottom: 1.8rem; }
+.hero h1 {
+  max-width: 640px;
+  margin: 0 auto 1.25rem;
+  font-size: 2.4rem;
+}
+.hero .subline {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ---------- Page header (interior pages) ---------- */
+.page-header {
+  text-align: left;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.page-header h1 {
+  max-width: 720px;
+  margin-bottom: 1rem;
+}
+.page-header .subline {
+  max-width: 580px;
+  color: var(--text-2);
+  font-size: 1rem;
+}
+
+/* ---------- Two-card services overview ---------- */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.25rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+.service-card h3 {
+  font-size: 1.35rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  line-height: 1.25;
+}
+.service-card p {
+  color: var(--text-2);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+  flex: 1;
+}
+.service-card .card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.service-card .card-price {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- About ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 4rem;
+  align-items: start;
+}
+.about-text p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 56ch;
+}
+.about-text p + p { margin-top: 1rem; }
+
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+}
+.credential {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.credential .big {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.credential .big-serif {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+.credential .label {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--text-2);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Testimonial ---------- */
+.testimonial {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.testimonial .eyebrow { margin-bottom: 2rem; }
+.testimonial blockquote {
+  margin: 0 0 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.testimonial cite {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--text-3);
+  font-style: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------- What You Get (2-col blocks) ---------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 3rem;
+  margin-top: 2.5rem;
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.feature h3 {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.feature p {
+  color: var(--text-2);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---------- Tutoring pricing block ---------- */
+.price-block {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.price-block .big-price {
+  font-family: var(--mono);
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  display: block;
+  margin-bottom: 1rem;
+}
+.price-block .price-note {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  margin: 0 auto 2rem;
+  max-width: 420px;
+}
+
+/* ---------- CTA bar ---------- */
+.cta-bar {
+  background: var(--accent);
+  color: var(--surface);
+  padding: 3.5rem 1rem;
+  text-align: center;
+}
+.cta-bar p {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--surface);
+  margin: 0 0 1.5rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+.cta-bar .btn-cta-inverse {
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--surface);
+  padding: 0.78rem 1.5rem;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  display: inline-block;
+  font-family: var(--sans);
+}
+.cta-bar .btn-cta-inverse:hover {
+  background: var(--bg);
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+/* ---------- How It Works (numbered steps) ---------- */
+.steps {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  counter-reset: step;
+}
+.step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  counter-increment: step;
+}
+.step:first-child { border-top: 1px solid var(--border); }
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+  padding-top: 0.15rem;
+  letter-spacing: 0.02em;
+}
+.step h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+.step p {
+  color: var(--text-2);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 58ch;
+}
+.step p + p { margin-top: 0.6rem; }
+
+/* ---------- Editorial service table ---------- */
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+.service-table thead th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.service-table thead th:last-child { text-align: right; }
+.service-table tbody td {
+  padding: 1.4rem 0.5rem 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.service-table td:first-child {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.02rem;
+  width: 28%;
+}
+.service-table td:nth-child(2) {
+  color: var(--text-2);
+}
+.service-table td:last-child {
+  text-align: right;
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  width: 18%;
+}
+
+/* ---------- Line-by-line explanation block ---------- */
+.explainer {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.explainer p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* ---------- Pricing page sections ---------- */
+.pricing-group {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.pricing-group:last-of-type { border-bottom: 0; }
+.pricing-group h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.pricing-group .hr-row {
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0.5rem 0 1.25rem;
+}
+.pricing-group .inline-note {
+  color: var(--text-2);
+  font-size: 0.94rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- FAQ ---------- */
+.faq-list { margin-top: 2rem; }
+.faq-item {
+  border-top: 1px solid var(--border);
+  padding: 0;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 400;
+  transition: transform 200ms ease;
+  line-height: 1;
+  display: inline-block;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item .faq-body {
+  padding: 0 0 1.4rem;
+  color: var(--text-2);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+.site-footer-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--wide-pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer a { color: var(--text-2); }
+.site-footer a:hover { color: var(--ink); }
+.footer-links { display: flex; gap: 1.5rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  :root {
+    --wide-pad: 1.25rem;
+    --section-gap: 3.5rem;
+  }
+  h1 { font-size: 1.95rem; }
+  h2 { font-size: 1.45rem; }
+
+  .hero { padding: 3.5rem 0.5rem 2.75rem; }
+  .hero h1 { font-size: 1.95rem; }
+
+  .services-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .feature-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .credentials {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+
+  /* Mobile nav */
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem var(--wide-pad) 1rem;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li {
+    width: 100%;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links li:first-child { border-top: 0; }
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 0;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .price-block .big-price { font-size: 2.4rem; }
+  .cta-bar p { font-size: 1.08rem; }
+  .service-table { font-size: 0.88rem; }
+  .service-table td:first-child { width: 40%; }
+  .service-table td:nth-child(2) { font-size: 0.85rem; }
+
+  .step {
+    grid-template-columns: 2.2rem 1fr;
+    gap: 1rem;
+    padding: 1.6rem 0;
+  }
+
+  .site-footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.7rem; }
+  .hero h1 { font-size: 1.7rem; }
+  .btn-row .btn { width: 100%; text-align: center; }
+}
