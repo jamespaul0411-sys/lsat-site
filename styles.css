@@ -795,3 +795,87 @@ hr {
     font-size: 1.5rem;
   }
 }
+
+/* Booking list (clickable pricing rows) */
+.booking-list {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.booking-list-head,
+.booking-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 1.5rem;
+  padding: 1.4rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.booking-list-head {
+  padding: 0.9rem 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.booking-list-head span:last-child { text-align: right; }
+
+.booking-row {
+  text-decoration: none;
+  color: inherit;
+  transition: padding 160ms ease, background 160ms ease;
+}
+.booking-row:hover {
+  background: var(--surface);
+  text-decoration: none;
+  padding-left: 1rem;
+}
+.booking-row:hover .booking-option {
+  color: var(--accent);
+}
+.booking-row:focus {
+  outline: none;
+}
+.booking-row:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.booking-option {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--ink);
+  transition: color 160ms ease;
+}
+.booking-details {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.booking-price {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--ink);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .booking-list-head {
+    display: none;
+  }
+  .booking-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "option price"
+      "details details";
+    gap: 0.4rem 1rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .booking-option { grid-area: option; }
+  .booking-price { grid-area: price; }
+  .booking-details { grid-area: details; font-size: 0.9rem; }
+  .booking-row:hover { padding-left: 0.5rem; }
+}
